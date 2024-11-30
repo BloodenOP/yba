@@ -32,3 +32,14 @@ equip("Dio's Diary")
 equip("Pure Rokakaka")
 game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
 end
+
+while wait() do
+local args = {
+    [1] = "PurchaseShopItem",
+    [2] = {
+        ["ItemName"] = "1x Lucky Arrow"
+    }
+}
+
+game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+end
