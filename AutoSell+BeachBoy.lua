@@ -33,7 +33,6 @@ equip("Pure Rokakaka")
 game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
 end
 
-while wait() do
 local args = {
     [1] = "PurchaseShopItem",
     [2] = {
@@ -41,5 +40,7 @@ local args = {
     }
 }
 
+while wait() do
 game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+wait(2)
 end
