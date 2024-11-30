@@ -42,5 +42,4 @@ local args = {
 
 while wait() do
 game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
-wait(2)
 end
