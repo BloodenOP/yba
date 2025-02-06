@@ -26,7 +26,7 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
-local CombatTab⚔ = Window:CreateTab("Combat", nil) -- Title, Image
+local CombatTab = Window:CreateTab("Combat", nil) -- Title, Image
 local CombatSection = CombatTab:CreateSection("Movment")
 
 Rayfield:Notify({
