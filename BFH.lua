@@ -78,8 +78,10 @@ local Toggle = CombatTab:CreateToggle({
    Name = "WalkSpeed",
    CurrentValue = false,
    Callback = function()
-	_G.infinjump = not _G.infinjump
-	if _G.infinJumpStarted == nil then
+	_G.speed = not _G.speed
+	if _G.speedStarted == nil then
+	CurrentValue = true
+	game.StarterGui:SetCore("SendNotification
 		CurrentValue = true
 local Slider = CombatTab:CreateSlider({
    Name = "WalkSpeed Slider",
