@@ -74,7 +74,13 @@ end
    end,
 })
 
-
+local Toggle = CombatTab:CreateToggle({
+   Name = "WalkSpeed",
+   CurrentValue = false,
+   Callback = function()
+	_G.infinjump = not _G.infinjump
+	if _G.infinJumpStarted == nil then
+		CurrentValue = true
 local Slider = CombatTab:CreateSlider({
    Name = "WalkSpeed Slider",
    Range = {1, 250},
