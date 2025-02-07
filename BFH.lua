@@ -14,7 +14,7 @@ local Window = Rayfield:CreateWindow({
       Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
    },
-   KeySystem = true, -- Set this to true to use our key system
+   KeySystem = false, -- Set this to true to use our key system
    KeySettings = {
       Title = "Key | BFH",
       Subtitle = "Key System",
@@ -155,7 +155,7 @@ local Keybind1 = MiscTab:CreateKeybind({
 game.StarterGui:SetCore("SendNotification", {Title="Blox Fruits"; Text="Bro you Runner!"; Duration=5;})
 local args = {
     [1] = "requestEntrance",
-    [2] = Vector3.new(923.2125244140625, 126.97600555419922, 32852.83203125)
+    [2] = Vector3.new(2284.912109375, 15.537666320800781, 905.5136108398438)
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
