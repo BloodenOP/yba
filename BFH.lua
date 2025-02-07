@@ -54,8 +54,6 @@ if _G.infinJumpStarted == nil then
    --Ensures this only runs once to save resources
     CurrentValue = true
    
-   --Notifies readiness
-   game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
 
    --The actual infinite jump
    local plr = game:GetService('Players').LocalPlayer
@@ -154,6 +152,7 @@ local Keybind1 = MiscTab:CreateKeybind({
    HoldToInteract = false,
    Flag = "Keybind1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Keybind)
+game.StarterGui:SetCore("SendNotification", {Title="BFHub"; Text="Runner!"; Duration=5;})
 local args = {
     [1] = "requestEntrance",
     [2] = Vector3.new(923.2125244140625, 126.97600555419922, 32852.83203125)
