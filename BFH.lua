@@ -51,25 +51,25 @@ local Toggle = CombatTab:CreateToggle({
 _G.infinjump = not _G.infinjump
 
 if _G.infinJumpStarted == nil then
-	--Ensures this only runs once to save resources
-	 CurrentValue = true
-	
-	--Notifies readiness
-	game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
+   --Ensures this only runs once to save resources
+    CurrentValue = true
+   
+   --Notifies readiness
+   game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
 
-	--The actual infinite jump
-	local plr = game:GetService('Players').LocalPlayer
-	local m = plr:GetMouse()
-	m.KeyDown:connect(function(k)
-		if _G.infinjump then
-			if k:byte() == 32 then
-			humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
-			humanoid:ChangeState('Jumping')
-			wait()
-			humanoid:ChangeState('Seated')
-			end
-		end
-	end)
+   --The actual infinite jump
+   local plr = game:GetService('Players').LocalPlayer
+   local m = plr:GetMouse()
+   m.KeyDown:connect(function(k)
+      if _G.infinjump then
+         if k:byte() == 32 then
+         humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+         humanoid:ChangeState('Jumping')
+         wait()
+         humanoid:ChangeState('Seated')
+         end
+      end
+   end)
 end
    end,
 })
@@ -78,21 +78,48 @@ local Toggle = CombatTab:CreateToggle({
    Name = "WalkSpeed",
    CurrentValue = false,
    Callback = function()
-	_G.speed = not _G.speed
-	if _G.speedStarted == nil then
-	CurrentValue = true
-	game.StarterGui:SetCore("SendNotification
-		CurrentValue = true
+   _G.enabledS = not _G.enabledS
+   end
+})
 local Slider = CombatTab:CreateSlider({
    Name = "WalkSpeed Slider",
-   Range = {1, 250},
+   Range = {16, 300},
    Increment = 1,
    Suffix = "Speed",
    CurrentValue = 16,
-   Flag = "sliderws", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Flag = "sliderws", 
    Callback = function(Value)
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
-   end,
+    while game:GetService("RunService").RenderStepped:wait() do
+    if _G.enabledS then
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+    end
+    end
+end
+})
+
+local Toggle = CombatTab:CreateToggle({
+   Name = "JumpPower",
+   CurrentValue = false,
+   Callback = function()
+   _G.enabledJ = not _G.enabledJ
+   end
+})
+local Slider = CombatTab:CreateSlider({
+   Name = "JumpPower Slider",
+   Range = {50, 250},
+   Increment = 1,
+   Suffix = "Power",
+   CurrentValue = 50,
+   Flag = "jumpsliderws", 
+   Callback = function(Value)
+    while game:GetService("RunService").RenderStepped:wait() do
+    if _G.enabledJ then
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+    elseif not _G.enabledJ then
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+    end
+    end
+end
 })
 
 local MiscTab = Window:CreateTab("Misc", nil)
@@ -115,6 +142,21 @@ local Button2 = MiscTab:CreateButton({
         local args = {
     [1] = "SetTeam",
     [2] = "Marines"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+   end,
+})
+
+local Keybind1 = MiscTab:CreateKeybind({
+   Name = "Running",
+   CurrentKeybind = "nil",
+   HoldToInteract = false,
+   Flag = "Keybind1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Keybind)
+local args = {
+    [1] = "requestEntrance",
+    [2] = Vector3.new(923.2125244140625, 126.97600555419922, 32852.83203125)
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
